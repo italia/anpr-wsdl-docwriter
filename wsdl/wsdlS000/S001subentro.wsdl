@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> <?xml-stylesheet type="text/xsl" href="wsdl-viewer.xsl"?>  
+<?xml version="1.0" encoding="UTF-8"?> 
 <wsdl:definitions targetNamespace="http://sogei.it/ANPR/S001AnprService"
 				  xmlns:tns="http://sogei.it/ANPR/S001AnprService" 
 				  xmlns:schema="http://www.sogei.it/ANPR/S001subentro" 

@@ -430,7 +430,7 @@ body {
 	margin: 0;
 	padding: .5em 4em;
 	color: white;
-	background-color: red;
+	background-color: #0066cc;
 	border: 1px solid darkred;
 }
 
@@ -444,7 +444,8 @@ body {
 	margin: 0;
 	padding: .5em 2em;
 	color: gray;
-	background-color: gainsboro;
+	background-color: #00264d;
+	link-color: #65dcdf
 	font-size: 80%;
 	border-top: 1px dotted gray;
 	text-align: right

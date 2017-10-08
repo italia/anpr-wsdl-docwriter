@@ -220,7 +220,7 @@ body {
 	margin: 0;
 	padding: .5em 4em;
 	color: white;
-	background-color: #0066cc;
+	background-color: #0066cc !important;
 	border: 1px solid darkred;
 }
 

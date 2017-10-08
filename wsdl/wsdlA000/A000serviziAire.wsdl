@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> <?xml-stylesheet type="text/xsl" href="wsdl-viewer.xsl"?> <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://sogei.it/ANPR/A000AnprService" xmlns:schema="http://sogei.it/ANPR/A000aire" xmlns:tns="http://sogei.it/ANPR/A000AnprService" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">  
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://sogei.it/ANPR/A000AnprService" xmlns:schema="http://sogei.it/ANPR/A000aire" xmlns:tns="http://sogei.it/ANPR/A000AnprService" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">  
 	
 	<wsdl:types> 
 		<xsd:schema targetNamespace="http://sogei.it/ANPR/A000AnprService">    
