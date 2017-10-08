@@ -6,12 +6,13 @@
 Welcome to anpr-wsdl-docwriter's documentation!
 ===============================================
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
+   :caption: Contents:
 
+   configure
 
+   
 
 Indices and tables
 ==================
