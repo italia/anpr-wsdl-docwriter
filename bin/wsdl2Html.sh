@@ -37,12 +37,12 @@ else
     done
 fi
 
-echo $input
-echo $outputFolder
-
 node "$SCRIPTPATH/WSDL.js" --wsdl $input -o $outputFolder
 for fin in "$outputFolder/*.yaml"; do
     echo $fin
+    filename=`basename $fin`
+    filename=${filename%%.*}
+    echo $filename
     java -jar "$SCRIPTPATH/swagger-codegen-cli.jar" generate -l html2 -i $fin -o $outputFolder
-    mv $outputFolder/index.html $outputFolder/`basename $fin`.html
+    mv $outputFolder/index.html $outputFolder/${filename}.html
 done
