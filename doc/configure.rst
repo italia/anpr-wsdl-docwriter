@@ -8,11 +8,11 @@ Il tool utilizzato per la trasformazione dei file WSDl in HTML e' reperibile sul
 
 Installazione ed Esecuzione MANUALE
 -----------------------------------
-1. Scaricare il file `zip<http://tomi.vanek.sk/xml/wsdl-viewer_3-1-02.zip>`_;
+1. Scaricare il file `Zip <http://tomi.vanek.sk/xml/wsdl-viewer_3-1-02.zip>`__;
 2. Estrarre la cartella;
    .. bashcode:: #unzip *wsdl*.zip
-3. Copiare la cartella nella in ./bin;
-4. Aggiungere la riga di codice ``<?xml-stylesheet type="text/xsl" href="wsdl-viewer.xsl"?>`` subito dopo la riga di codice ``<?xml version="1.0" encoding="utf-8"?>`` 
+3. Copiare la cartella nella in *./bin*;
+4. Aggiungere la riga di codice <?xml-stylesheet type="text/xsl" href="wsdl-viewer.xsl"?> subito dopo la riga di codice <?xml version="1.0" encoding="utf-8"?> 
    La riga di codice va aggiunta solo nei file *.wsdl*, all'interno della directory: *./wdsl/*  ex. **./wdsl/wdsl1000/1000serviziIscrizione.wsdl** 
 5. Esseguire il comando
    .. bashcode:: firefox </percorso/wsdl/file>
