@@ -1,0 +1,820 @@
+swagger: '2.0'
+info:
+  title: AnprServiceS001
+  description: ''
+  x-ibm-name: anprservices001
+  version: 1.0.0
+schemes:
+  - https
+basePath: /AnprServiceS001
+produces:
+  - application/xml
+consumes:
+  - text/xml
+securityDefinitions:
+  clientID:
+    type: apiKey
+    name: X-IBM-Client-Id
+    in: header
+    description: ''
+security:
+  - clientID: []
+x-ibm-configuration:
+  type: wsdl
+  wsdl-definition:
+    wsdl: ./wsdlS000/S001subentro.wsdl
+    service: AnprServiceS001
+    port: AnprServicePortS001
+    soap-version: '1.1'
+  assembly:
+    execute:
+      - proxy:
+          title: proxy
+          target-url: 'http://sogei.it/ANPR/AnprServiceS001'
+  gateway: datapower-gateway
+  enforced: true
+  testable: true
+  phase: realized
+  cors:
+    enabled: true
+paths:
+  /subentroS001:
+    post:
+      summary: Operation subentroS001
+      description: ''
+      operationId: subentroS001
+      x-ibm-soap:
+        soap-action: ''
+        soap-operation: '{http://www.sogei.it/ANPR/S001subentro}RichiestaS001'
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/subentroS001Input'
+      responses:
+        default:
+          description: ''
+          schema:
+            $ref: '#/definitions/subentroS001Output'
+definitions:
+  Security:
+    xml:
+      namespace: >-
+        http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+      prefix: wsse
+    type: object
+    properties:
+      UsernameToken:
+        xml:
+          namespace: >-
+            http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+          prefix: wsse
+        type: object
+        properties:
+          Username:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+              prefix: wsse
+            type: string
+          Password:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+              prefix: wsse
+            type: string
+          Nonce:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+              prefix: wsse
+            type: string
+            properties:
+              EncodingType:
+                xml:
+                  namespace: ''
+                  attribute: true
+                type: string
+          Created:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+              prefix: wsu
+            type: string
+      Timestamp:
+        xml:
+          namespace: >-
+            http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+          prefix: wsu
+        type: object
+        properties:
+          Created:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+              prefix: wsu
+            type: string
+          Expires:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+              prefix: wsu
+            type: string
+          Id:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+              prefix: wsu
+              attribute: true
+            type: string
+  subentroS001Input:
+    type: object
+    properties:
+      Envelope:
+        xml:
+          prefix: soapenv
+          namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+        type: object
+        properties:
+          Header:
+            $ref: '#/definitions/subentroS001Header'
+          Body:
+            type: object
+            properties:
+              RichiestaS001:
+                $ref: '#/definitions/RichiestaS001_schema'
+            required:
+              - RichiestaS001
+        required:
+          - Body
+    required:
+      - Envelope
+    example: >-
+
+      <soapenv:Envelope
+      xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+       <soapenv:Header>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+         <wsse:UsernameToken>
+          <wsse:Username>string</wsse:Username>
+          <wsse:Password>string</wsse:Password>
+          <wsse:Nonce EncodingType="string">string</wsse:Nonce>
+          <wsu:Created>string</wsu:Created>
+         </wsse:UsernameToken>
+         <wsu:Timestamp wsu:Id="string">
+          <wsu:Created>string</wsu:Created>
+          <wsu:Expires>string</wsu:Expires>
+         </wsu:Timestamp>
+        </wsse:Security>
+       </soapenv:Header>
+       <soapenv:Body>
+        <schema:RichiestaS001 xmlns:schema="http://www.sogei.it/ANPR/S001subentro"><!-- mandatory -->
+         <testataRichiesta><!-- mandatory -->
+          <idOperazioneComune><!-- mandatory -->string</idOperazioneComune>
+          <codMittente><!-- mandatory -->string</codMittente>
+          <codDestinatario><!-- mandatory -->string</codDestinatario>
+          <operazioneRichiesta><!-- mandatory -->string</operazioneRichiesta>
+          <dataOraRichiesta><!-- mandatory -->2016-04-18T14:07:37</dataOraRichiesta>
+          <tipoOperazione><!-- mandatory -->string</tipoOperazione>
+          <protocolloComune>string</protocolloComune>
+          <dataProtocolloComune>2016-04-18</dataProtocolloComune>
+          <tipoInvio><!-- mandatory -->string</tipoInvio>
+          <dataDecorrenza>2016-04-18</dataDecorrenza>
+          <dataDefinizionePratica>2016-04-18</dataDefinizionePratica>
+          <nomeApplicativo>string</nomeApplicativo>
+          <versioneApplicativo>string</versioneApplicativo>
+          <fornitoreApplicativo>string</fornitoreApplicativo>
+         </testataRichiesta>
+         <nomeFile>string</nomeFile>
+         <fileXml>abcd</fileXml>
+        </schema:RichiestaS001>
+       </soapenv:Body>
+      </soapenv:Envelope>
+  subentroS001Header:
+    type: object
+    properties:
+      Security:
+        $ref: '#/definitions/Security'
+  subentroS001Output:
+    type: object
+    properties:
+      Envelope:
+        xml:
+          prefix: soapenv
+          namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+        type: object
+        properties:
+          Body:
+            type: object
+            properties:
+              RispostaS001:
+                $ref: '#/definitions/RispostaS001_schema'
+        required:
+          - Body
+    required:
+      - Envelope
+    example: >-
+
+      <soapenv:Envelope
+      xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+       <soapenv:Body>
+        <schema:RispostaS001 xmlns:schema="http://www.sogei.it/ANPR/S001subentro">
+         <schema:rispostaOK>
+          <testataRisposta><!-- mandatory -->
+           <idOperazioneComune><!-- mandatory -->string</idOperazioneComune>
+           <codMittente><!-- mandatory -->string</codMittente>
+           <codDestinatario><!-- mandatory -->string</codDestinatario>
+           <operazioneRichiesta><!-- mandatory -->string</operazioneRichiesta>
+           <dataOraRichiesta><!-- mandatory -->2016-04-18T14:07:37</dataOraRichiesta>
+           <protocolloComune>string</protocolloComune>
+           <dataProtocolloComune>2016-04-18</dataProtocolloComune>
+           <dataDecorrenza>2016-04-18</dataDecorrenza>
+           <idOperazioneANPR><!-- mandatory -->string</idOperazioneANPR>
+           <esitoOperazione><!-- mandatory -->string</esitoOperazione>
+          </testataRisposta>
+          <datiDettaglioRisposta><!-- mandatory -->
+           <nomeFile><!-- mandatory -->string</nomeFile>
+           <descrizioneEsito><!-- mandatory -->string</descrizioneEsito>
+          </datiDettaglioRisposta>
+         </schema:rispostaOK>
+         <schema:rispostaKO>
+          <testataRisposta><!-- mandatory -->
+           <idOperazioneComune><!-- mandatory -->string</idOperazioneComune>
+           <codMittente><!-- mandatory -->string</codMittente>
+           <codDestinatario><!-- mandatory -->string</codDestinatario>
+           <operazioneRichiesta><!-- mandatory -->string</operazioneRichiesta>
+           <dataOraRichiesta><!-- mandatory -->2016-04-18T14:07:37</dataOraRichiesta>
+           <protocolloComune>string</protocolloComune>
+           <dataProtocolloComune>2016-04-18</dataProtocolloComune>
+           <dataDecorrenza>2016-04-18</dataDecorrenza>
+           <idOperazioneANPR><!-- mandatory -->string</idOperazioneANPR>
+           <esitoOperazione><!-- mandatory -->string</esitoOperazione>
+          </testataRisposta>
+          <listaErrori><!-- mandatory -->
+           <errore><!-- mandatory --><!-- between 1 and unlimited repetitions of this element -->
+            <codiceErroreAnomalia><!-- mandatory -->string</codiceErroreAnomalia>
+            <tipoErroreAnomalia><!-- mandatory -->string</tipoErroreAnomalia>
+            <testoErroreAnomalia><!-- mandatory -->string</testoErroreAnomalia>
+            <oggettoErroreAnomalia>string</oggettoErroreAnomalia>
+            <campoErroreAnomalia>string</campoErroreAnomalia>
+            <valoreErroreAnomalia>string</valoreErroreAnomalia>
+           </errore>
+          </listaErrori>
+         </schema:rispostaKO>
+        </schema:RispostaS001>
+       </soapenv:Body>
+      </soapenv:Envelope>
+  RichiestaS001_schema:
+    xml:
+      namespace: 'http://www.sogei.it/ANPR/S001subentro'
+      prefix: schema
+    type: object
+    properties:
+      testataRichiesta:
+        $ref: '#/definitions/tipoTestataRichiesta_ns1'
+      nomeFile:
+        type: string
+        xml:
+          namespace: ''
+          prefix: ''
+      fileXml:
+        type: string
+        format: binary
+        xml:
+          namespace: ''
+          prefix: ''
+    required:
+      - testataRichiesta
+    example: >-
+
+      <schema:RichiestaS001
+      xmlns:schema="http://www.sogei.it/ANPR/S001subentro">
+       <testataRichiesta><!-- mandatory -->
+        <idOperazioneComune><!-- mandatory -->string</idOperazioneComune>
+        <codMittente><!-- mandatory -->string</codMittente>
+        <codDestinatario><!-- mandatory -->string</codDestinatario>
+        <operazioneRichiesta><!-- mandatory -->string</operazioneRichiesta>
+        <dataOraRichiesta><!-- mandatory -->2016-04-18T14:07:37</dataOraRichiesta>
+        <tipoOperazione><!-- mandatory -->string</tipoOperazione>
+        <protocolloComune>string</protocolloComune>
+        <dataProtocolloComune>2016-04-18</dataProtocolloComune>
+        <tipoInvio><!-- mandatory -->string</tipoInvio>
+        <dataDecorrenza>2016-04-18</dataDecorrenza>
+        <dataDefinizionePratica>2016-04-18</dataDefinizionePratica>
+        <nomeApplicativo>string</nomeApplicativo>
+        <versioneApplicativo>string</versioneApplicativo>
+        <fornitoreApplicativo>string</fornitoreApplicativo>
+       </testataRichiesta>
+       <nomeFile>string</nomeFile>
+       <fileXml>abcd</fileXml>
+      </schema:RichiestaS001>
+  RispostaS001_schema:
+    xml:
+      namespace: 'http://www.sogei.it/ANPR/S001subentro'
+      prefix: schema
+    type: object
+    properties:
+      rispostaOK:
+        $ref: '#/definitions/rispostaOK_schema'
+      rispostaKO:
+        $ref: '#/definitions/rispostaKO_schema'
+    example: |-
+
+      <schema:RispostaS001 xmlns:schema="http://www.sogei.it/ANPR/S001subentro">
+       <schema:rispostaOK>
+        <testataRisposta><!-- mandatory -->
+         <idOperazioneComune><!-- mandatory -->string</idOperazioneComune>
+         <codMittente><!-- mandatory -->string</codMittente>
+         <codDestinatario><!-- mandatory -->string</codDestinatario>
+         <operazioneRichiesta><!-- mandatory -->string</operazioneRichiesta>
+         <dataOraRichiesta><!-- mandatory -->2016-04-18T14:07:37</dataOraRichiesta>
+         <protocolloComune>string</protocolloComune>
+         <dataProtocolloComune>2016-04-18</dataProtocolloComune>
+         <dataDecorrenza>2016-04-18</dataDecorrenza>
+         <idOperazioneANPR><!-- mandatory -->string</idOperazioneANPR>
+         <esitoOperazione><!-- mandatory -->string</esitoOperazione>
+        </testataRisposta>
+        <datiDettaglioRisposta><!-- mandatory -->
+         <nomeFile><!-- mandatory -->string</nomeFile>
+         <descrizioneEsito><!-- mandatory -->string</descrizioneEsito>
+        </datiDettaglioRisposta>
+       </schema:rispostaOK>
+       <schema:rispostaKO>
+        <testataRisposta><!-- mandatory -->
+         <idOperazioneComune><!-- mandatory -->string</idOperazioneComune>
+         <codMittente><!-- mandatory -->string</codMittente>
+         <codDestinatario><!-- mandatory -->string</codDestinatario>
+         <operazioneRichiesta><!-- mandatory -->string</operazioneRichiesta>
+         <dataOraRichiesta><!-- mandatory -->2016-04-18T14:07:37</dataOraRichiesta>
+         <protocolloComune>string</protocolloComune>
+         <dataProtocolloComune>2016-04-18</dataProtocolloComune>
+         <dataDecorrenza>2016-04-18</dataDecorrenza>
+         <idOperazioneANPR><!-- mandatory -->string</idOperazioneANPR>
+         <esitoOperazione><!-- mandatory -->string</esitoOperazione>
+        </testataRisposta>
+        <listaErrori><!-- mandatory -->
+         <errore><!-- mandatory --><!-- between 1 and unlimited repetitions of this element -->
+          <codiceErroreAnomalia><!-- mandatory -->string</codiceErroreAnomalia>
+          <tipoErroreAnomalia><!-- mandatory -->string</tipoErroreAnomalia>
+          <testoErroreAnomalia><!-- mandatory -->string</testoErroreAnomalia>
+          <oggettoErroreAnomalia>string</oggettoErroreAnomalia>
+          <campoErroreAnomalia>string</campoErroreAnomalia>
+          <valoreErroreAnomalia>string</valoreErroreAnomalia>
+         </errore>
+        </listaErrori>
+       </schema:rispostaKO>
+      </schema:RispostaS001>
+  tipoTestataRichiesta_ns1:
+    xml:
+      namespace: ''
+      prefix: ''
+    allOf:
+      - $ref: '#/definitions/tipoDatoTestataRichiesta_ns2'
+      - xml:
+          namespace: ''
+          prefix: ''
+        type: object
+        properties: {}
+    x-xsi-type: tipoTestataRichiesta
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/vocabolarioSubentro'
+      prefix: ns1
+    x-xsi-type-uniquename: tipoTestataRichiesta_ns1
+  rispostaOK_schema:
+    xml:
+      namespace: 'http://www.sogei.it/ANPR/S001subentro'
+      prefix: schema
+    type: object
+    properties:
+      testataRisposta:
+        $ref: '#/definitions/tipoTestataRisposta_ns1'
+      datiDettaglioRisposta:
+        $ref: '#/definitions/tipoDatiDettaglioRisposta_ns1'
+    required:
+      - testataRisposta
+      - datiDettaglioRisposta
+    x-xsi-type: rispostaOK
+    x-xsi-type-xml:
+      namespace: 'http://www.sogei.it/ANPR/S001subentro'
+      prefix: schema
+    x-xsi-type-uniquename: rispostaOK_schema
+  rispostaKO_schema:
+    xml:
+      namespace: 'http://www.sogei.it/ANPR/S001subentro'
+      prefix: schema
+    type: object
+    properties:
+      testataRisposta:
+        $ref: '#/definitions/tipoTestataRisposta_ns1'
+      listaErrori:
+        $ref: '#/definitions/tipoListaErrori_ns1'
+    required:
+      - testataRisposta
+      - listaErrori
+    x-xsi-type: rispostaKO
+    x-xsi-type-xml:
+      namespace: 'http://www.sogei.it/ANPR/S001subentro'
+      prefix: schema
+    x-xsi-type-uniquename: rispostaKO_schema
+  tipoDatoTestataRichiesta_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: object
+    properties:
+      idOperazioneComune:
+        $ref: '#/definitions/charMax30_ns2'
+        description: "Identificativo univoco attribuito all'operazione dal comune.\t\r\nDeve essere numerico e crescente. \r\nSe esiste in ANPR, il comune riceve come esito la risposta in precedenza fornita da ANPR con lo stesso ID; se non esiste ed e' inferiore all'ultimo inviato, l'elaborazione termina con errore."
+      codMittente:
+        $ref: '#/definitions/char6_ns2'
+        description: Il codice ISTAT del comune che effettua la richiesta.
+      codDestinatario:
+        $ref: '#/definitions/char6_ns2'
+        description: il codice dell'ANPR (999999)
+      operazioneRichiesta:
+        $ref: '#/definitions/tipoOperazioneRichiesta_ns2'
+        description: 'Codice dell''operazione richiesta (es. 1001,5005)'
+      dataOraRichiesta:
+        type: string
+        format: date-time
+        xml:
+          prefix: ''
+          namespace: ''
+        description: La data e l‟ora in cui si invia la comunicazione anagrafica ad ANPR.
+      tipoOperazione:
+        $ref: '#/definitions/tipoRichiedenteOperazione_ns2'
+        description: "C=richiesta del cittadino\r\n\r\nV= variazione per correzioni di errori o anomalie dei dati\r\n\r\nR =rettifica di una precedente operazione"
+      protocolloComune:
+        $ref: '#/definitions/charMax20_ns2'
+        description: Il protocollo assegnato dall‟anagrafe comunale alla pratica
+      dataProtocolloComune:
+        type: string
+        format: date
+        xml:
+          prefix: ''
+          namespace: ''
+        description: Data di protocollazione della pratica da parte dell'ufficio Anagrafe.
+      tipoInvio:
+        $ref: '#/definitions/tipoInvioAmmesso_ns2'
+        description: "Può assumere i valori:\r\nTEST\t\r\nPRE_SUB\t\t\t\r\nPROD\t\t\t\r\nSe il parametro non è compatibile con l'ambiente di riferimento il servizio termina con errore"
+      dataDecorrenza:
+        type: string
+        format: date
+        xml:
+          prefix: ''
+          namespace: ''
+        description: Data di inizio validità dell’operazione di registrazione.
+      dataDefinizionePratica:
+        type: string
+        format: date
+        xml:
+          prefix: ''
+          namespace: ''
+        description: >-
+          La data di definizione della pratica del comune associata alla
+          registrazione anagrafica
+      nomeApplicativo:
+        $ref: '#/definitions/charMax80_ns2'
+        description: Nome dell'applicativo utilizzato per l'invio
+      versioneApplicativo:
+        $ref: '#/definitions/charMax80_ns2'
+        description: Versione dell'applicativo utilizzato per l'invio
+      fornitoreApplicativo:
+        $ref: '#/definitions/charMax80_ns2'
+        description: Fornitore del software
+    required:
+      - idOperazioneComune
+      - codMittente
+      - codDestinatario
+      - operazioneRichiesta
+      - dataOraRichiesta
+      - tipoOperazione
+      - tipoInvio
+    x-xsi-type: tipoDatoTestataRichiesta
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: tipoDatoTestataRichiesta_ns2
+    x-ibm-discriminator: true
+  tipoTestataRisposta_ns1:
+    xml:
+      namespace: ''
+      prefix: ''
+    allOf:
+      - $ref: '#/definitions/tipoDatoTestataRisposta_ns2'
+      - xml:
+          namespace: ''
+          prefix: ''
+        type: object
+        properties: {}
+    x-xsi-type: tipoTestataRisposta
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/vocabolarioSubentro'
+      prefix: ns1
+    x-xsi-type-uniquename: tipoTestataRisposta_ns1
+  tipoDatiDettaglioRisposta_ns1:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: object
+    properties:
+      nomeFile:
+        type: string
+        xml:
+          namespace: ''
+          prefix: ''
+      descrizioneEsito:
+        type: string
+        xml:
+          namespace: ''
+          prefix: ''
+    required:
+      - nomeFile
+      - descrizioneEsito
+    x-xsi-type: tipoDatiDettaglioRisposta
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/vocabolarioSubentro'
+      prefix: ns1
+    x-xsi-type-uniquename: tipoDatiDettaglioRisposta_ns1
+  tipoListaErrori_ns1:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: object
+    properties:
+      errore:
+        type: array
+        items:
+          $ref: '#/definitions/tipoErroriAnomalia_ns2'
+        minItems: 1
+    required:
+      - errore
+    x-xsi-type: tipoListaErrori
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/vocabolarioSubentro'
+      prefix: ns1
+    x-xsi-type-uniquename: tipoListaErrori_ns1
+  charMax30_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    maxLength: 30
+    minLength: 1
+    x-xsi-type: charMax30
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: charMax30_ns2
+  char6_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    minLength: 6
+    maxLength: 6
+    x-xsi-type: char6
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: char6_ns2
+  tipoOperazioneRichiesta_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    minLength: 4
+    maxLength: 4
+    description: >-
+      Codice del servizio così come riportati nella tabella servizi (es. 1001,
+      5005)
+    x-xsi-type: tipoOperazioneRichiesta
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: tipoOperazioneRichiesta_ns2
+  tipoRichiedenteOperazione_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    minLength: 1
+    maxLength: 1
+    x-xsi-type: tipoRichiedenteOperazione
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: tipoRichiedenteOperazione_ns2
+  charMax20_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    maxLength: 20
+    minLength: 1
+    x-xsi-type: charMax20
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: charMax20_ns2
+  tipoInvioAmmesso_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    maxLength: 20
+    minLength: 1
+    x-xsi-type: tipoInvioAmmesso
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: tipoInvioAmmesso_ns2
+  charMax80_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    maxLength: 80
+    minLength: 1
+    x-xsi-type: charMax80
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: charMax80_ns2
+  tipoDatoTestataRisposta_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: object
+    properties:
+      idOperazioneComune:
+        $ref: '#/definitions/charMax30_ns2'
+        description: >-
+          Identificativo univoco attribuito all'operazione. Normalmente è
+          attribuito dal comune; per il WEB è attribuito da ANPR.
+      codMittente:
+        $ref: '#/definitions/char6_ns2'
+        description: codice dell'ANPR
+      codDestinatario:
+        $ref: '#/definitions/char6_ns2'
+        description: Il codice ISTAT del comune a cui inviare la risposta.
+      operazioneRichiesta:
+        $ref: '#/definitions/tipoOperazioneRichiesta_ns2'
+        description: 'Codice dell''operazione richiesta (es. 1001,5005)'
+      dataOraRichiesta:
+        type: string
+        format: date-time
+        xml:
+          prefix: ''
+          namespace: ''
+        description: La data e l‟ora in cui si invia la comunicazione anagrafica ad ANPR.
+      protocolloComune:
+        $ref: '#/definitions/charMax20_ns2'
+        description: La data e l‟ora in cui si invia la comunicazione anagrafica ad ANPR.
+      dataProtocolloComune:
+        type: string
+        format: date
+        xml:
+          prefix: ''
+          namespace: ''
+        description: Data di protocollazione della pratica da parte dell'ufficio Anagrafe.
+      dataDecorrenza:
+        type: string
+        format: date
+        xml:
+          prefix: ''
+          namespace: ''
+        description: >-
+          Data di inizio validità dell’operazione di registrazione.Obbligatorio
+          solo per i servizi di registrazione.
+      idOperazioneANPR:
+        $ref: '#/definitions/numericoMax30_ns2'
+        description: Identificativo univoco attribuito all'operazione da ANPR.
+      esitoOperazione:
+        $ref: '#/definitions/charMax4_ns2'
+        description: "Codice che indica se l’operazione è terminata con successo oppure con segnalazioni o errori.\r\n2 = richiesta completata con esito positivo                                            \r\n3 = richiesta completata con esito negativo    \r\n4 = richiesta annullata                                              \r\n6 = richiesta completata con esito positivo ma con warnings"
+    required:
+      - idOperazioneComune
+      - codMittente
+      - codDestinatario
+      - operazioneRichiesta
+      - dataOraRichiesta
+      - idOperazioneANPR
+      - esitoOperazione
+    x-xsi-type: tipoDatoTestataRisposta
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: tipoDatoTestataRisposta_ns2
+    x-ibm-discriminator: true
+  tipoErroriAnomalia_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: object
+    properties:
+      codiceErroreAnomalia:
+        $ref: '#/definitions/charMax6_ns2'
+        description: Codice che identifica l'errore o l'anomalia
+      tipoErroreAnomalia:
+        $ref: '#/definitions/char1_ns2'
+        description: E= errore bloccante; W = anomalia non bloccante
+      testoErroreAnomalia:
+        $ref: '#/definitions/charMax240_ns2'
+        description: Testo descrittivo dell'errore o dell'anomalia.
+      oggettoErroreAnomalia:
+        $ref: '#/definitions/charMax240_ns2'
+        description: Oggetto nel quale è stato rilevato l'errore o l'anomalia.
+      campoErroreAnomalia:
+        $ref: '#/definitions/charMax240_ns2'
+        description: >-
+          Descrizione del campo presente nell'oggetto nel quale è stato rilevato
+          l'errore o l'anomalia.
+      valoreErroreAnomalia:
+        $ref: '#/definitions/charMax240_ns2'
+        description: Valore del campo nel quale è stato rilevato l'errore o l'anomalia.
+    required:
+      - codiceErroreAnomalia
+      - tipoErroreAnomalia
+      - testoErroreAnomalia
+    x-xsi-type: tipoErroriAnomalia
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: tipoErroriAnomalia_ns2
+    x-ibm-discriminator: true
+  numericoMax30_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    maxLength: 30
+    x-xsi-type: numericoMax30
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: numericoMax30_ns2
+  charMax4_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    maxLength: 4
+    minLength: 1
+    x-xsi-type: charMax4
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: charMax4_ns2
+  charMax6_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    maxLength: 6
+    minLength: 1
+    x-xsi-type: charMax6
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: charMax6_ns2
+  char1_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    minLength: 1
+    maxLength: 1
+    x-xsi-type: char1
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: char1_ns2
+  charMax240_ns2:
+    xml:
+      namespace: ''
+      prefix: ''
+    type: string
+    maxLength: 240
+    x-xsi-type: charMax240
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/tipoDato'
+      prefix: ns2
+    x-xsi-type-uniquename: charMax240_ns2
+  tipoAnomalie_ns1:
+    xml:
+      namespace: ''
+      prefix: ''
+    allOf:
+      - $ref: '#/definitions/tipoErroriAnomalia_ns2'
+      - xml:
+          namespace: ''
+          prefix: ''
+        type: object
+        properties: {}
+    x-xsi-type: tipoAnomalie
+    x-xsi-type-xml:
+      namespace: 'http://sogei.it/ANPR/vocabolarioSubentro'
+      prefix: ns1
+    x-xsi-type-uniquename: tipoAnomalie_ns1
